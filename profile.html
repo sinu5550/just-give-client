@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JustGive.</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    </link>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg shadow-sm ">
+        <div class=" container ">
+            <a class="navbar-brand text-dark fw-bolder fs-2" href="index.html">just<span
+                    class="text-danger">Give.</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse gap-2 " id="navbarNavAltMarkup">
+                <div class="navbar-nav  ps-lg-5 item-nav ">
+                    <a class="btn btn-sm btn-outline-dark rounded-0 border-0  fw-medium" aria-current="page"
+                        href="index.html">Home</a>
+                    <div class="after-login-nav">
+
+                    </div>
+
+
+                </div>
+                <div class="navbar-nav  item-nav gap-2 ms-lg-auto 2 align-items-center ">
+
+                    <div class="welcome fw-medium"></div>
+                    <div class="coin-container">
+
+                    </div>
+                    <div class="pro-pic btn-group dropstart" data-bs-hover="dropdown">
+                        <button type=" button" class="profile-pic-btn btn px-0 border-0 rounded-0"
+                            data-bs-toggle="dropdown">
+                        </button>
+                        <ul class="dropdown-menu mt-5 ">
+                            <li><a href="#" class="rounded-0 text-decoration-none"><button class="dropdown-item "
+                                        type="button">
+                                        <i class="bi bi-person-fill me-2"></i>Profile</button></a></li>
+                            <li><a href="#" class="rounded-0 text-decoration-none"><button class="dropdown-item "
+                                        type="button">
+                                        <i class="bi bi-lock-fill me-2"></i>Change Password</button></a></li>
+                            <li onclick="handlelogOut()"><a href="#" class="rounded-0 text-decoration-none"><button
+                                        class="dropdown-item " type="button">
+                                        <i class=" bi bi-box-arrow-left me-2"></i>Logout</button></a></li>
+
+
+                        </ul>
+                    </div>
+
+
+                    <div class="login-signup">
+                        <a href="registration.html" class="btn btn-outline-danger rounded-0">Sign Up</a>
+                        <a href="login.html" class="btn btn-danger rounded-0">Login</a>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+    </nav>
+
+    <main class="container ">
+        <div class="shadow d-flex justify-content-center my-5 p-3  rounded-3">
+            <form class="row " style="width: 100%; margin: auto" method="post" enctype="multipart/form-data">
+                <div class="col-12 col-md-6 order-2 order-md-1">
+                    <h1 class="mt-5 text-center">Update Your Profile</h1>
+                    <label for="pro_username" class="fw-medium form-label">Username</label>
+                    <input id="pro_username" type="text" class="mb-2 form-control" placeholder="username" readonly />
+                    <label for="pro_first_name" class="fw-medium form-label">First Name</label>
+                    <input id="pro_first_name" type="text" class="mb-2 form-control" placeholder="First Name"
+                        required />
+                    <label for="pro_last_name" class="fw-medium form-label">Last Name</label>
+                    <input id="pro_last_name" type="text" class="mb-2 form-control" placeholder="last Name" required />
+                    <label for="pro_mobile_no" class="fw-medium form-label">Mobile no.</label>
+                    <input id="pro_mobile_no" type="text" class="mb-2 form-control" placeholder="Mobile Number"
+                        required />
+                    <label for="pro_email" class="fw-medium form-label">Email</label>
+                    <input id="pro_email" type="email" class="mb-2 form-control" placeholder="Email" readonly />
+                    <div class="text-center">
+                        <button class="btn btn-danger rounded-0 mb-5" type="submit"
+                            onclick="handleSaveCHanges(event)">Save
+                            Changes</button>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 order-1 order-md-2 mt-5 ">
+                    <div class="d-flex justify-content-center flex-column profile_img_main">
+
+                        <!-- <img src="{{ user.account.profile_image.url }}"
+                            style="border-radius: 50%; height: 200px; width: 200px; object-fit: cover; object-position: 50% 20%; border: 2px solid #1877f2;margin: auto;"
+                            alt="Profile Picture" class="mt-5"> -->
+
+                        <!-- <label for="pro_image" class="fw-medium form-label">Profile Image</label>
+                        <input id="pro_image" class="mb-2 form-control" type="file"> -->
+                    </div>
+                </div>
+            </form>
+
+
+
+        </div>
+    </main>
+
+
+
+
+    <!-- bootstrap script  -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./app.js"></script>
+    <script src="./auth.js"></script>
+    <script src="./profile.js"></script>
+    <script src="./logout.js"></script>
+
+</body>
+
+</html>
