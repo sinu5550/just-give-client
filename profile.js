@@ -42,11 +42,9 @@ const loadProfile = async () => {
 const handleSaveCHanges = async (event) => {
     event.preventDefault();
     const updatedUserData = {
-        username: document.getElementById("pro_username").value,
         first_name: document.getElementById("pro_first_name").value,
         last_name: document.getElementById("pro_last_name").value,
         mobile_no: document.getElementById("pro_mobile_no").value,
-        email: document.getElementById("pro_email").value,
     };
     const profileImageInput = document.getElementById("pro_image");
     if (profileImageInput.files.length > 0) {

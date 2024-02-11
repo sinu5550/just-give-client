@@ -114,18 +114,18 @@ const handleListBook = async (event) => {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
 
-        const userResponse = await fetch(`http://127.0.0.1:8000/user/list/${user_id}/`);
+        const userResponse = await fetch(`http://127.0.0.1:8000/user/profile/${user_id}/`);
         const userData = await userResponse.json();
-
         if (!userResponse.ok) {
             throw new Error(`HTTP error! Status: ${userResponse.status}`);
         }
 
         const newCoins = userData.coins + 50;
+        console.log(newCoins);
 
-        const coinsResponse = await fetch(`http://127.0.0.1:8000/user/list/${user_id}/`, {
+        const coinsResponse = await fetch(`http://127.0.0.1:8000/user/profile/${user_id}/`, {
             method: "PUT",
-            headers: { "content-type": "application/json" },
+            headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ coins: newCoins }),
         });
 
