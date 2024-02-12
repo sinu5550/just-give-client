@@ -7,7 +7,7 @@ const loadListedBooks = () => {
         return;
     }
     if (id) {
-        fetch(`http://127.0.0.1:8000/book/list/?user_id=${id}`)
+        fetch(`http://justgive-api-sinu5550.onrender.com/book/list/?user_id=${id}`)
             .then((res) => res.json())
             .then((data) => displayBooks(data))
 
@@ -35,7 +35,7 @@ const displayBooks = (books) => {
 };
 const handleDeleteBook = (event, id) => {
     event.preventDefault();
-    fetch(`http://127.0.0.1:8000/book/list/${id}/`, {
+    fetch(`http://justgive-api-sinu5550.onrender.com/book/list/${id}/`, {
         method: "DELETE",
     })
         .then(response => {

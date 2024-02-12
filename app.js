@@ -26,7 +26,7 @@ const loadFirst = () => {
         pro_pic.classList.remove("d-none");
         login_signup.classList.add("d-none");
         pro_pic.classList.add("d-block");
-        fetch(`http://127.0.0.1:8000/user/profile/${user_id}`)
+        fetch(`http://justgive-api-sinu5550.onrender.com/user/profile/${user_id}`)
             .then((res) => res.json())
             .then((data) => {
                 const pro_pic_btn = document.querySelector(".profile-pic-btn");
@@ -87,7 +87,7 @@ const handleListBook = async (event) => {
 
     try {
 
-        const response = await fetch("http://127.0.0.1:8000/book/list/", {
+        const response = await fetch("http://justgive-api-sinu5550.onrender.com/book/list/", {
             method: "POST",
             headers: { "content-type": "application/json" },
             body: JSON.stringify(info),
@@ -97,7 +97,7 @@ const handleListBook = async (event) => {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
 
-        const userResponse = await fetch(`http://127.0.0.1:8000/user/list/${user_id}/`);
+        const userResponse = await fetch(`http://justgive-api-sinu5550.onrender.com/user/list/${user_id}/`);
         const userData = await userResponse.json();
         if (!userResponse.ok) {
             throw new Error(`HTTP error! Status: ${userResponse.status}`);
@@ -106,7 +106,7 @@ const handleListBook = async (event) => {
         const newCoins = userData.coins + 50;
         console.log(newCoins);
 
-        const coinsResponse = await fetch(`http://127.0.0.1:8000/user/list/${user_id}/`, {
+        const coinsResponse = await fetch(`http://justgive-api-sinu5550.onrender.com/user/list/${user_id}/`, {
             method: "PATCH",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ coins: newCoins }),
@@ -138,7 +138,7 @@ const handleListBook = async (event) => {
 
 
 const loadTestimonials = () => {
-    fetch(`http://127.0.0.1:8000/user/reviews/`)
+    fetch(`http://justgive-api-sinu5550.onrender.com/user/reviews/`)
         .then((res) => res.json())
         .then((data) => displayTestimonials(data))
 
@@ -150,7 +150,7 @@ const displayTestimonials = (reviews) => {
     reviews.forEach((review) => {
         console.log(review);
         const li = document.createElement("li");
-        fetch(`http://127.0.0.1:8000/user/profile/${review.reviewer}/`)
+        fetch(`http://justgive-api-sinu5550.onrender.com/user/profile/${review.reviewer}/`)
             .then((res) => res.json())
             .then((data) => {
                 const timestamp = new Date(review.created_at);

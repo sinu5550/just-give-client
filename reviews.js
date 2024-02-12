@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         try {
-            const response = await fetch("http://127.0.0.1:8000/user/reviews/", {
+            const response = await fetch("http://justgive-api-sinu5550.onrender.com/user/reviews/", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 const loadReviews = () => {
     const id = localStorage.getItem("user_id");
-    fetch(`http://127.0.0.1:8000/user/reviews/`)
+    fetch(`http://justgive-api-sinu5550.onrender.com/user/reviews/`)
         .then((res) => res.json())
         .then((data) => displayReviews(data))
 
@@ -70,7 +70,7 @@ const displayReviews = (reviews) => {
     totalReviewsElement.innerText = `Total Reviews: ${totalReviews}`;
     reviews.forEach((review) => {
         console.log(review);
-        fetch(`http://127.0.0.1:8000/user/profile/${review.reviewer}/`)
+        fetch(`http://justgive-api-sinu5550.onrender.com/user/profile/${review.reviewer}/`)
             .then((res) => res.json())
             .then((data) => {
                 const reviewsCard = document.getElementById("ratings-card");

@@ -28,7 +28,7 @@ const handleRegistration = (event) => {
         ) {
             console.log(info);
 
-            fetch("http://127.0.0.1:8000/user/register/", {
+            fetch("http://justgive-api-sinu5550.onrender.com/user/register/", {
                 method: "POST",
                 headers: { "content-type": "application/json" },
                 body: JSON.stringify(info),
@@ -66,7 +66,7 @@ const handleLogin = (event) => {
     const password = getValue("login-password");
     console.log(username, password);
     if ((username, password)) {
-        fetch("http://127.0.0.1:8000/user/login/", {
+        fetch("http://justgive-api-sinu5550.onrender.com/user/login/", {
             method: "POST",
             headers: { "content-type": "application/json" },
             body: JSON.stringify({ username, password }),

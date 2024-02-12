@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-    fetch(`http://127.0.0.1:8000/gift/list/`)
+    fetch(`http://justgive-api-sinu5550.onrender.com/gift/list/`)
         .then((res) => res.json())
         .then((data) => displayGifts(data))
 
@@ -42,7 +42,7 @@ const handleRedeem = (event, giftCoin) => {
         return;
     }
     event.preventDefault();
-    fetch(`http://127.0.0.1:8000/user/list/${user_id}/`)
+    fetch(`http://justgive-api-sinu5550.onrender.com/user/list/${user_id}/`)
         .then((res) => res.json())
         .then((data) => {
             const currentCoin = data.coins - giftCoin;
@@ -56,7 +56,7 @@ const handleRedeem = (event, giftCoin) => {
                 return;
             }
 
-            fetch(`http://127.0.0.1:8000/user/list/${user_id}/`, {
+            fetch(`http://justgive-api-sinu5550.onrender.com/user/list/${user_id}/`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json'

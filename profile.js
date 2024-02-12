@@ -19,7 +19,7 @@ const updateProfile = (userData) => {
 
 const fetchUserProfile = async (user_id) => {
     try {
-        const response = await fetch(`http://127.0.0.1:8000/user/profile/${user_id}/`);
+        const response = await fetch(`http://justgive-api-sinu5550.onrender.com/user/profile/${user_id}/`);
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
@@ -60,7 +60,7 @@ const handleSaveCHanges = async (event) => {
         formData.append("image", profileImageInput.files[0]);
 
         try {
-            const imgResponse = await fetch(`http://127.0.0.1:8000/user/profile/${user_id}/`, {
+            const imgResponse = await fetch(`http://justgive-api-sinu5550.onrender.com/user/profile/${user_id}/`, {
                 method: "PATCH",
                 body: formData,
             });
@@ -70,7 +70,7 @@ const handleSaveCHanges = async (event) => {
             }
 
             const updatedImageData = await imgResponse.json();
-            const response = await fetch(`http://127.0.0.1:8000/user/profile/${user_id}/`, {
+            const response = await fetch(`http://justgive-api-sinu5550.onrender.com/user/profile/${user_id}/`, {
                 method: "PATCH",
                 headers: {
                     "Content-Type": "application/json",
@@ -98,7 +98,7 @@ const handleSaveCHanges = async (event) => {
     } else {
         // If no new profile image is selected, send the other user data directly
         try {
-            const response = await fetch(`http://127.0.0.1:8000/user/profile/${user_id}/`, {
+            const response = await fetch(`http://justgive-api-sinu5550.onrender.com/user/profile/${user_id}/`, {
                 method: "PATCH",
                 headers: {
                     "Content-Type": "application/json",
