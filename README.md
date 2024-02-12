@@ -18,6 +18,7 @@ This is a platform for booking hotels and donating books, where users can donate
 
 - Can display detailed user information
 - User can edit their profile details
+- User can upload their profile picture also can change their profile picture
 
 ### Book Listing for Donate
 
