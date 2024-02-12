@@ -19,11 +19,6 @@ This is a platform for booking hotels and donating books, where users can donate
 - Can display detailed user information
 - User can edit their profile details
 
-### Hotel Booking and Confirmation
-
-- Allow users to book hotels using deposited money
-- Send confirmation email for booked hotels
-
 ### Book Listing for Donate
 
 - Authenticated users donate their book for donating with necessary information required. 
