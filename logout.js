@@ -1,7 +1,7 @@
 const handlelogOut = () => {
     const token = localStorage.getItem("token");
 
-    fetch("http://justgive-api-sinu5550.onrender.com/user/logout/", {
+    fetch("https://justgive-api-sinu5550.onrender.com/user/logout/", {
         method: "POST",
         headers: {
             Authorization: `Token ${token}`,

@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         try {
-            const response = await fetch("http://justgive-api-sinu5550.onrender.com/user/reviews/", {
+            const response = await fetch("https://justgive-api-sinu5550.onrender.com/user/reviews/", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 const loadReviews = () => {
     const id = localStorage.getItem("user_id");
-    fetch(`http://justgive-api-sinu5550.onrender.com/user/reviews/`)
+    fetch(`https://justgive-api-sinu5550.onrender.com/user/reviews/`)
         .then((res) => res.json())
         .then((data) => displayReviews(data))
 
@@ -70,7 +70,7 @@ const displayReviews = (reviews) => {
     totalReviewsElement.innerText = `Total Reviews: ${totalReviews}`;
     reviews.forEach((review) => {
         console.log(review);
-        fetch(`http://justgive-api-sinu5550.onrender.com/user/profile/${review.reviewer}/`)
+        fetch(`https://justgive-api-sinu5550.onrender.com/user/profile/${review.reviewer}/`)
             .then((res) => res.json())
             .then((data) => {
                 const reviewsCard = document.getElementById("ratings-card");
