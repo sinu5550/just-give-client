@@ -3,7 +3,16 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    font-family: Montserrat;
+
+
 }
+
+/* .sec-heading h2 {
+
+    font-weight: 600;
+    font-size: 40px;
+} */
 
 .input {
     margin: 10px;

@@ -76,127 +76,29 @@
 
     </nav>
 
-    <header class="">
-        <div class="swiffy-slider  slider-nav-animation slider-nav-animation-fadein slider-item-first-visible slider-nav-round slider-indicators-inside slider-indicators-square slider-indicators-dark slider-nav-autoplay slider-nav-autopause "
-            id="swiffy-animation" data-slider-nav-autoplay-interval="4000">
-            <ul class="slider-container bg-body-tertiary py-5" id="container1">
-                <li id="slide1" class="slide-visible">
-                    <div class="my-5 d-flex justify-content-center">
-                        <div class="row container align-items-center m-0">
-                            <div class="col-12 col-md-7 order-2 order-md-1 text-center">
-                                <h2 class="fw-bolder display-5 mt-5 mt-md-2">Welcome to <span
-                                        class="text-dark display-3 fw-bolder "> just<span
-                                            class="text-danger">Give.</span>
-                                    </span>
-                                </h2>
-                                <div class="mt-2">
-                                    <p class="fs-3 ">Donate your books and buy so many gifts.</p>
-
-
-                                    <a href="addBooks.html"
-                                        class="btn btn-danger rounded-pill fs-5  px-4 py-2 mt-3">Donate Books <i
-                                            class="bi bi-arrow-right"></i></a>
-
-
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-5 d-flex order-1 order-md-2 justify-content-center">
-                                <img src="./images/harryBook.png" class="w-50" alt="Answer Picture">
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li id="slide2">
-
-                    <div class=" my-5 d-flex justify-content-center">
-                        <div class="row container align-items-center m-0">
-                            <div class="col-12 col-md-7 order-2 order-md-1 text-center">
-                                <h2 class="fw-bolder display-5 mt-5 mt-md-2">Collect <span
-                                        class="text-danger display-3 fw-bolder ">Points</span>
-                                </h2>
-                                <div class="mt-2">
-                                    <p class="fs-3 ">For every books you get 50 points.</p>
-
-
-
-
-
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-5 d-flex order-1 order-md-2 justify-content-center">
-                                <img src="./images/harryBook.png" class="w-50" alt="Answer Picture">
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li id="slide3">
-                    <div class="my-5 d-flex justify-content-center">
-                        <div class="row container align-items-center m-0">
-                            <div class="col-12 col-md-7 order-2 order-md-1 text-center">
-                                <h2 class="fw-bolder display-5 mt-5 mt-md-2">Started from<span
-                                        class="text-danger display-3 fw-bolder "> 50</span>
-                                </h2>
-                                <div class="mt-2">
-                                    <p class="fs-3 ">If you have minimum 50 points you can purchase gifts.
-                                    </p>
-
-
-
-
-
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-5 d-flex order-1 order-md-2 justify-content-center">
-                                <img src="./images/harryBook.png" class="w-50" alt="Answer Picture">
-                            </div>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-
-            <button type="button" class="slider-nav" aria-label="Go to previous"></button>
-            <button type="button" class="slider-nav slider-nav-next" aria-label="Go to next"></button>
-
-            <div class="slider-indicators">
-                <button aria-label="Go to slide" class="active "></button>
-                <button aria-label=" Go to slide"></button>
-                <button aria-label="Go to slide"></button>
-
-            </div>
-        </div>
-
-    </header>
-
-    <section class="container my-3">
+    <section class="container">
         <h2 class="text-center mt-4  text-danger">REDEEM GIFTS</h2>
         <hr class="mx-auto mt-1 mb-4" style="width: 50%; border-color: red;">
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4  mt-2 mb-5" id="gift_card">
+            <!-- {% for c in car %}
+            <div class="col">
+                <div class="card h-100 border-0 shadow py-3 ">
+                    <img src="{{c.image.url}}" class="card-img-top" alt="...">
+                    <div class="card-body">
 
+                        <div class="d-flex justify-content-between align-items-center">
+                            <p class="card-title fw-bold fs-4">{{c.name}}</p>
+                            <p class="fw-bold mt-2 text-danger">$ {{c.price}}</p>
+                        </div>
+                        <p><span class="fw-medium">Brand :</span> {{c.brand.name}}</a></p>
+                        <p class="card-text">{{c.description | truncatewords:10}}</p>
+                        <a href="{% url 'car:car_details' c.id %}" class="btn btn-dark rounded-0">View
+                            Details</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %} -->
 
-        </div>
-    </section>
-
-    <section class="container my-2 mb-5">
-        <div class="">
-            <h2 class="text-center  text-danger">USER'S SAY</h2>
-            <hr class="mx-auto mt-1 mb-4" style="width: 50%; border-color: red;">
-        </div>
-        <div
-            class="swiffy-slider slider-item-show3 slider-item-reveal slider-nav-white slider-nav-outside-expand slider-nav-round slider-nav-visible slider-nav-animation  slider-nav-autoplay slider-nav-autopause ">
-            <ul class="slider-container py-4 review-carousel" id="slider2">
-
-
-
-            </ul>
-
-            <button type="button" class="slider-nav" aria-label="Go left"></button>
-            <button type="button" class="slider-nav slider-nav-next" aria-label="Go left"></button>
-
-
-        </div>
-        <div><a href="reviews.html"
-                class=" mt-3 float-end text-decoration-none text-white bg-danger px-3 py-1 rounded-5">Give a
-                Review <i class="bi bi-arrow-right "></i></a>
         </div>
     </section>
 

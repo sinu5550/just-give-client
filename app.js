@@ -1,19 +1,24 @@
+
 const loadFirst = () => {
     const login_signup = document.querySelector(".login-signup");
     const pro_pic = document.querySelector(".pro-pic");
     const after_login_nav = document.querySelector(".after-login-nav");
     const coin_container = document.querySelector(".coin-container");
+    const user_id = localStorage.getItem("user_id");
 
 
-    // Check if the user is already logged in
+
+
     const token = localStorage.getItem("token");
     if (token) {
         // User is logged in, hide login-signup and show pro_pic
         after_login_nav.innerHTML = `
-        <a class="btn btn-sm btn-outline-dark rounded-0 border-0  fw-medium" aria-current="page"
+        <a class="btn btn-sm btn-outline-secondary rounded-5  border-0  fw-medium px-3" aria-current="page"
                             href="addBooks.html">List Books</a>
-        <a class="btn btn-sm btn-outline-dark rounded-0 border-0  fw-medium" aria-current="page"
-                            href="listedbooks.html">Book Listed by You</a>
+        <a class="btn btn-sm btn-outline-secondary rounded-5 border-0  fw-medium px-3" aria-current="page"
+                            href="listedbooks.html">Donated</a>
+        <a class="btn btn-sm btn-outline-secondary rounded-5 border-0  fw-medium px-3" aria-current="page"
+                            href="reviews.html">Reviews</a>
         `;
 
 
@@ -21,7 +26,6 @@ const loadFirst = () => {
         pro_pic.classList.remove("d-none");
         login_signup.classList.add("d-none");
         pro_pic.classList.add("d-block");
-        const user_id = localStorage.getItem("user_id");
         fetch(`http://127.0.0.1:8000/user/profile/${user_id}`)
             .then((res) => res.json())
             .then((data) => {
@@ -60,41 +64,20 @@ const loadFirst = () => {
         pro_pic.classList.add("d-none");
     }
 };
-// const loadBooks = () => {
-//     fetch("http://127.0.0.1:8000/book/list/")
-//         .then((res) => res.json())
-//         .then((data) => displayBooks(data))
-// };
-
-// const displayBooks = (books) => {
-//     books.forEach((book) => {
-//         const parent = document.getElementById("donated-list");
-//         const tr = document.createElement("tr");
-//         tr.innerHTML = `
-//         <td>${book?.title}</td>
-//         <td>${book?.author}</td>
-//         <td> ${book?.description.slice(0, 60)}...</td>
-//         <td>
-//             <div>
-//                 <a href="#" class="btn btn-primary btn-sm ">Edit</a>
-//                 <a href="#" class="btn btn-danger btn-sm">Delete</a>
-//             </div>
-//         </td>
-//           `;
-//         parent.appendChild(tr);
-//     });
-// };
-// loadBooks();
 
 loadFirst();
 
 const handleListBook = async (event) => {
     event.preventDefault();
+
     const user_id = localStorage.getItem("user_id");
     const title = document.getElementById("title").value;
     const author = document.getElementById("author").value;
     const description = document.getElementById("description").value;
-
+    if (!user_id) {
+        window.location.href = "login.html";
+        return;
+    }
     const info = {
         title,
         author,
@@ -154,4 +137,55 @@ const handleListBook = async (event) => {
 };
 
 
+const loadTestimonials = () => {
+    fetch(`http://127.0.0.1:8000/user/reviews/`)
+        .then((res) => res.json())
+        .then((data) => displayTestimonials(data))
 
+};
+
+const displayTestimonials = (reviews) => {
+
+    const reviewsCard = document.querySelector(".review-carousel");
+    reviews.forEach((review) => {
+        console.log(review);
+        const li = document.createElement("li");
+        fetch(`http://127.0.0.1:8000/user/profile/${review.reviewer}/`)
+            .then((res) => res.json())
+            .then((data) => {
+                const timestamp = new Date(review.created_at);
+                const options = { hour: 'numeric', minute: '2-digit' };
+                const formattedTime = timestamp.toLocaleTimeString([], options);
+                const formattedDate = timestamp.toLocaleDateString([], { day: '2-digit', month: 'short', year: 'numeric' });
+                li.innerHTML = `
+                
+               
+                <div class="card shadow h-100 border-0 rounded-4 ">
+                    <div class="ratio ratio-16x9">
+                        <div class="d-flex justify-content-center">
+                            <img src=${data.image}
+                                style="border-radius: 50%; height: 150px; width: 150px; object-fit: cover; object-position: 50% 20%; border: 2px solid #1877f2;"
+                                alt="Profile Picture" class="card-img-top mt-4" loading="lazy">
+                        </div>
+                    </div>
+                    <div class="card-body ">
+                        <div class="d-flex flex-column flex-md-row">
+                            <div class="flex-grow-1">
+                                <strong>${data.user.first_name} ${data.user.last_name}</strong>
+                                <p class="card-text">${review.rating}</p>
+                            </div>
+                            <div class="px-md-2">${formattedDate}</div>
+                        </div>
+                        <p class="card-text">"${review.text}"</p>
+                        
+                    </div>
+                </div>
+           
+               
+              `;
+                reviewsCard.appendChild(li);
+            })
+
+    });
+};
+loadTestimonials();

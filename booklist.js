@@ -2,6 +2,10 @@
 
 const loadListedBooks = () => {
     const id = localStorage.getItem("user_id");
+    if (!id) {
+        window.location.href = "login.html";
+        return;
+    }
     if (id) {
         fetch(`http://127.0.0.1:8000/book/list/?user_id=${id}`)
             .then((res) => res.json())
@@ -21,7 +25,7 @@ const displayBooks = (books) => {
         <td> ${book?.description.slice(0, 60)}...</td>
         <td>
             <div>
-                <a href="listedbooks.html" class="btn btn-primary btn-sm ">Edit</a>
+               <!-- <a href="listedbooks.html" class="btn btn-primary btn-sm ">Edit</a> -->
                 <a href="listedbooks.html" class="btn btn-danger btn-sm" onclick="handleDeleteBook(event,${book?.id})" >Delete</a>
             </div>
         </td>

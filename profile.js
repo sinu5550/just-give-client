@@ -33,6 +33,10 @@ const fetchUserProfile = async (user_id) => {
 };
 const user_id = localStorage.getItem("user_id");
 const loadProfile = async () => {
+    if (!user_id) {
+        window.location.href = "login.html";
+        return;
+    }
     try {
         const userData = await fetchUserProfile(user_id);
         updateProfile(userData);
@@ -54,8 +58,6 @@ const handleSaveCHanges = async (event) => {
     if (profileImageInput.files.length > 0) {
         const formData = new FormData();
         formData.append("image", profileImageInput.files[0]);
-        // Append other updatedUserData properties if needed
-        // for example: formData.append("first_name", updatedUserData.user.first_name);
 
         try {
             const imgResponse = await fetch(`http://127.0.0.1:8000/user/profile/${user_id}/`, {

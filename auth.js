@@ -61,6 +61,7 @@ const getValue = (id) => {
 
 const handleLogin = (event) => {
     event.preventDefault();
+
     const username = getValue("login-username");
     const password = getValue("login-password");
     console.log(username, password);
