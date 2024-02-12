@@ -22,13 +22,13 @@ const loadFirst = () => {
         login_signup.classList.add("d-none");
         pro_pic.classList.add("d-block");
         const user_id = localStorage.getItem("user_id");
-        fetch(`http://127.0.0.1:8000/user/list/${user_id}`)
+        fetch(`http://127.0.0.1:8000/user/profile/${user_id}`)
             .then((res) => res.json())
             .then((data) => {
                 const pro_pic_btn = document.querySelector(".profile-pic-btn");
                 const welcome = document.querySelector(".welcome");
                 console.log(data);
-                welcome.innerHTML = `Welcome, ${data.first_name} ${data.last_name}`;
+                welcome.innerHTML = `Welcome, ${data.user.first_name} ${data.user.last_name}`;
                 coin_container.innerHTML = `
                 <div class="btn border-2 border-danger rounded-5 py-0">
                             <div class="d-flex align-items-center  py-0 my-0">
@@ -114,7 +114,7 @@ const handleListBook = async (event) => {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
 
-        const userResponse = await fetch(`http://127.0.0.1:8000/user/profile/${user_id}/`);
+        const userResponse = await fetch(`http://127.0.0.1:8000/user/list/${user_id}/`);
         const userData = await userResponse.json();
         if (!userResponse.ok) {
             throw new Error(`HTTP error! Status: ${userResponse.status}`);
@@ -123,8 +123,8 @@ const handleListBook = async (event) => {
         const newCoins = userData.coins + 50;
         console.log(newCoins);
 
-        const coinsResponse = await fetch(`http://127.0.0.1:8000/user/profile/${user_id}/`, {
-            method: "PUT",
+        const coinsResponse = await fetch(`http://127.0.0.1:8000/user/list/${user_id}/`, {
+            method: "PATCH",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ coins: newCoins }),
         });
@@ -142,7 +142,7 @@ const handleListBook = async (event) => {
         Swal.fire({
             title: "Success!",
             html: "Book Listed Successfully <br> You Got <b>50</b> coins.",
-            icon: "success"
+            icon: "success",
         }).then(() => {
 
             window.location.reload();

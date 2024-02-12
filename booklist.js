@@ -12,6 +12,7 @@ const loadListedBooks = () => {
 
 const displayBooks = (books) => {
     books.forEach((book) => {
+
         const parent = document.getElementById("donated-list");
         const tr = document.createElement("tr");
         tr.innerHTML = `
@@ -20,12 +21,37 @@ const displayBooks = (books) => {
         <td> ${book?.description.slice(0, 60)}...</td>
         <td>
             <div>
-                <a href="#" class="btn btn-primary btn-sm ">Edit</a>
-                <a href="#" class="btn btn-danger btn-sm">Delete</a>
+                <a href="listedbooks.html" class="btn btn-primary btn-sm ">Edit</a>
+                <a href="listedbooks.html" class="btn btn-danger btn-sm" onclick="handleDeleteBook(event,${book?.id})" >Delete</a>
             </div>
         </td>
           `;
         parent.appendChild(tr);
     });
+};
+const handleDeleteBook = (event, id) => {
+    event.preventDefault();
+    fetch(`http://127.0.0.1:8000/book/list/${id}/`, {
+        method: "DELETE",
+    })
+        .then(response => {
+            if (response.ok) {
+                console.log("Book deleted successfully");
+                Swal.fire({
+                    title: "Success!",
+                    html: "Book deleted successfully",
+                    icon: "success"
+                }).then(() => {
+                    window.location.reload();
+                });
+            } else {
+                console.error("Failed to delete book");
+            }
+        })
+        .catch(error => {
+            console.error("Error deleting book:", error);
+        });
+
+
 };
 loadListedBooks();
