@@ -42,9 +42,4 @@ This is a platform for booking hotels and donating books, where users can donate
 - **Email**: SMTP (Simple Mail Transfer Protocol) for sending verification emails
 ## Live Link
 - https://justgive.netlify.app/
-## Future Improvements
 
-- Implement OAuth for social media login.
-- Enhance the user interface for a better user experience.
-- Add more features such as hotel search and filtering options.
-- Integrate with a real payment gateway for booking transactions.
